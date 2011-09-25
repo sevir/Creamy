@@ -3,7 +3,7 @@
 /**
  * This file is part of Turbine
  * http://github.com/SirPepe/Turbine
- * 
+ *
  * Copyright Peter Kröner
  * Licensed under GNU LGPL 3, see license.txt or http://www.gnu.org/licenses/
  */
@@ -14,7 +14,6 @@
  * Loads Turbine
  * @var string $_GET['files'] A list of css files, separated by ;
  */
-
 
 // Benchmark start time
 $start = microtime(true);
@@ -52,6 +51,8 @@ include('lib/cssp.php');
 // Create the Turbine instance
 $cssp = new CSSP();
 
+$cssp->config = $config;
+
 
 // Get and store browser properties
 $browser = new Browser();
@@ -68,7 +69,6 @@ $plugins_loaded = false;
 
 // List of available plugins
 $plugins_available = array();
-
 
 // Process files
 if($_GET['files']){
@@ -128,7 +128,7 @@ if($_GET['files']){
 
 
 				$incache = false;    // Server-side cache: Has file already been parsed?
-				$cachedir = 'cache'; // Cache directory
+				$cachedir = (isset($config['cache_dir']))?$config['cache_dir']:'cache'; // Cache directory
 
 
 				// Server-side cache: Check if cache-directory has been created
@@ -290,8 +290,8 @@ if($_GET['files']){
 	else{
 		header('Cache-Control: no-cache, must-revalidate');
 		header('Expires: '.gmdate('D, d M Y H:i:s').' GMT');
-		header("Vary: Accept-Encoding"); 
-		header('Content-type: text/css'); 
+		header("Vary: Accept-Encoding");
+		header('Content-type: text/css');
 		header('ETag: '.$etag);
 	}
 

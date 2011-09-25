@@ -3,7 +3,7 @@
 /**
  * This file is part of Turbine
  * http://github.com/SirPepe/Turbine
- * 
+ *
  * Copyright Peter Kröner
  * Licensed under GNU LGPL 3, see license.txt or http://www.gnu.org/licenses/
  */
@@ -18,9 +18,10 @@ $config = array(
 	// Mode 2 additionally displays php developer messages and sets error_reporting to E_ALL
 	'debug_level' => 0,
 
-
 	// Base path to cssp and css files relative to css.php
-	'css_base_dir' => '',
+	'css_base_dir' => 'css/',
+
+	'cache_dir'=> 'cache',
 
 
 	// Minify regular css files (true) oder include them completely unchanged (false)
